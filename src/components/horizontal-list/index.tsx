@@ -8,6 +8,7 @@ export default function HorizontalList() {
   return (
     <Container>
       <FlatList
+        showsHorizontalScrollIndicator={false}
         data={tempData.results}
         horizontal
         renderItem={({item}) => <HorizontalListItem item={item} />}

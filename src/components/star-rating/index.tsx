@@ -17,7 +17,7 @@ export default function StarRating({score}: propsType) {
           <Icon
             key={index}
             name="star"
-            size={20}
+            size={18}
             color={index < starCount ? theme.yellow : theme.darkYellow}
           />
         );
