@@ -9,7 +9,6 @@ type propsType = {
 
 export default function ThemeModeProvider({children}: propsType) {
   const theme = useStoreSelector(state => state.themeSlice.theme);
-  console.log(theme);
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       {children}
