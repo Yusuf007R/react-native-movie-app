@@ -1,6 +1,5 @@
 import 'styled-components';
 
-// and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
     background: string;
@@ -8,6 +7,7 @@ declare module 'styled-components' {
     textColor: string;
     secTextColor: string;
     yellow: string;
+    darkYellow: string;
     blue: string;
   }
 }
