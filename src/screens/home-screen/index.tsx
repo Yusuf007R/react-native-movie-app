@@ -1,14 +1,29 @@
 import React from 'react';
-import {Button} from 'react-native';
-import useTheme from '../../hooks/use-theme';
-import {Container, StyledText} from './style';
+import {ImageHeaderScrollView} from 'react-native-image-header-scroll-view';
+import HomeHeader from '../../components/home-header';
+import {
+  Container,
+  ContentContainer,
+  HeaderBackground,
+  StyledText,
+} from './style';
 
 export default function HomeScreen() {
-  const {themeToggler} = useTheme();
   return (
-    <Container>
-      <StyledText>HomeScreen</StyledText>
-      <Button title="click me" onPress={themeToggler} />
-    </Container>
+    <ImageHeaderScrollView
+      maxHeight={200}
+      minHeight={0}
+      maxOverlayOpacity={0}
+      //@ts-ignore
+      renderForeground={HomeHeader}
+      //@ts-ignore
+      renderHeader={() => <HeaderBackground />}>
+      {/*@ts-ignore */}
+      <Container>
+        <ContentContainer>
+          <StyledText>Scroll Me!</StyledText>
+        </ContentContainer>
+      </Container>
+    </ImageHeaderScrollView>
   );
 }
