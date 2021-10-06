@@ -11,14 +11,15 @@ export const Container = styled.View`
 export const StyledFastImage = styled(FastImage)`
   width: 100%;
   height: 82%;
-  border-radius: 35px;
+  border-radius: 22px;
 `;
 
 export const DetailsContainer = styled.View`
   width: 100%;
   flex: 1;
-  align-items: center;
+  margin-left: 6px;
   justify-content: space-between;
+  padding-top: 4px;
 `;
 
 export const Title = styled.Text`
