@@ -1,18 +1,38 @@
 import React from 'react';
-import {FlatList} from 'react-native';
-import {tempData} from '../../dummy-data';
+import {FlatList, TouchableOpacity} from 'react-native';
+import {MoviesListItem} from '../../services/dto';
 import HorizontalListItem from '../horizontal-list-item';
-import {Container} from './style';
+import {
+  FlatListContainer,
+  SectionContainer,
+  SectionHeaderContainer,
+  SmallText,
+  StyledText,
+} from './style';
 
-export default function HorizontalList() {
+type PropsType = {
+  type: string;
+  data: MoviesListItem[];
+};
+
+export default function HorizontalList({type, data}: PropsType) {
   return (
-    <Container>
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        data={tempData.results}
-        horizontal
-        renderItem={({item}) => <HorizontalListItem item={item} />}
-      />
-    </Container>
+    <SectionContainer>
+      <SectionHeaderContainer>
+        <StyledText>{type}</StyledText>
+        <TouchableOpacity>
+          <SmallText>See All</SmallText>
+        </TouchableOpacity>
+      </SectionHeaderContainer>
+      <FlatListContainer>
+        <FlatList
+          showsHorizontalScrollIndicator={false}
+          data={data}
+          horizontal
+          keyExtractor={(element, index) => `${element.id}-${index}`}
+          renderItem={({item}) => <HorizontalListItem item={item} />}
+        />
+      </FlatListContainer>
+    </SectionContainer>
   );
 }

@@ -10,10 +10,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import moviesSlice from './slices/movies-slice';
 import themeSlice from './slices/theme-slice';
 
 const rootReducer = combineReducers({
   themeSlice: themeSlice,
+  moviesSlice: moviesSlice,
 });
 
 const persistConfig = {

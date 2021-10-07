@@ -1,21 +1,29 @@
-import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import React, {useEffect} from 'react';
 import {ImageHeaderScrollView} from 'react-native-image-header-scroll-view';
+import {shallowEqual} from 'react-redux';
 import HomeHeader from '../../components/home-header';
 import HorizontalList from '../../components/horizontal-list';
-import {
-  Container,
-  ContentContainer,
-  HeaderBackground,
-  SectionContainer,
-  SectionHeaderContainer,
-  SmallText,
-  StyledText,
-} from './style';
+import {fetchTopRated, fetchUpComing} from '../../redux/slices/movies-slice';
+import {useStoreDispatch, useStoreSelector} from '../../redux/store';
+import {Container, ContentContainer, HeaderBackground} from './style';
 
 //The library used in for the parallax image header, has a typescript error, thats why I'm using @ts-ignore
 
 export default function HomeScreen() {
+  const dispatch = useStoreDispatch();
+  const {topRated, upComing} = useStoreSelector(
+    state => ({
+      topRated: state.moviesSlice.topRated,
+      upComing: state.moviesSlice.upComing,
+    }),
+    shallowEqual,
+  );
+
+  useEffect(() => {
+    dispatch(fetchTopRated());
+    dispatch(fetchUpComing());
+  }, [dispatch]);
+
   return (
     <ImageHeaderScrollView
       maxHeight={220}
@@ -28,24 +36,8 @@ export default function HomeScreen() {
       {/*@ts-ignore */}
       <Container>
         <ContentContainer>
-          <SectionContainer>
-            <SectionHeaderContainer>
-              <StyledText>Recommended for you</StyledText>
-              <TouchableOpacity>
-                <SmallText>See All</SmallText>
-              </TouchableOpacity>
-            </SectionHeaderContainer>
-            <HorizontalList />
-          </SectionContainer>
-          <SectionContainer>
-            <SectionHeaderContainer>
-              <StyledText>Top Rated</StyledText>
-              <TouchableOpacity>
-                <SmallText>See All</SmallText>
-              </TouchableOpacity>
-            </SectionHeaderContainer>
-            <HorizontalList />
-          </SectionContainer>
+          <HorizontalList data={topRated} type="TopRated" />
+          <HorizontalList data={upComing} type="UpComing" />
         </ContentContainer>
       </Container>
     </ImageHeaderScrollView>

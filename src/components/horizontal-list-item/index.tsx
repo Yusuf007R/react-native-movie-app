@@ -1,10 +1,10 @@
 import React from 'react';
-import {ListItemType} from '../../dummy-data';
 import {Container, DetailsContainer, StyledFastImage, Title} from './style';
 import StarRating from '../star-rating';
+import {MoviesListItem} from '../../services/dto';
 
 type propsType = {
-  item: ListItemType;
+  item: MoviesListItem;
 };
 
 export default function HorizontalListItem({item}: propsType) {
