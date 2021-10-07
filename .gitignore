@@ -60,3 +60,4 @@ buck-out/
 /ios/Pods/
 
 dummy-data/
+src/configs/api-key.ts
