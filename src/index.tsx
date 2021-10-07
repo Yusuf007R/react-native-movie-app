@@ -6,6 +6,7 @@ import {persistStore} from 'redux-persist';
 import store from './redux/store';
 import HomeScreen from './screens/home-screen';
 import ThemeModeProvider from './theme/theme-provider';
+import DetailScreen from './screens/detail-screen';
 
 let persistor = persistStore(store);
 
@@ -14,7 +15,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeModeProvider>
-          <HomeScreen />
+          <DetailScreen />
         </ThemeModeProvider>
       </PersistGate>
     </Provider>
