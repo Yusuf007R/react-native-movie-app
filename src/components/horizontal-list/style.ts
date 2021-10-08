@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
+import calcListItemDimensions from '../../utils/calc-list-item-dimensions';
 
 export const FlatListContainer = styled.View`
   width: 100%;
-  height: 250px;
+  height: ${calcListItemDimensions().height}px;
 `;
 
 export const SectionContainer = styled.View`
   width: 100%;
-  height: 295px;
+  height: ${calcListItemDimensions().height + 40}px;
   justify-content: space-between;
   margin-top: 15px;
   padding-left: 20px;

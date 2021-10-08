@@ -5,7 +5,6 @@ export const Container = styled.View`
   width: 80px;
   height: 112px;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const StyledImage = styled(FastImage)`
@@ -15,6 +14,7 @@ export const StyledImage = styled(FastImage)`
 `;
 
 export const StyledText = styled.Text`
+  margin-top: 5px;
   text-align: center;
   color: ${({theme}) => theme.textColor};
   font-size: 12px;

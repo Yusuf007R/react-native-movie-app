@@ -15,7 +15,7 @@ export const Container = styled.View`
 
 export const ItemContainer = styled.View<containerType>`
   width: ${({numOfColumns}) => width / numOfColumns}px;
-  aspect-ratio: 0.7;
+  aspect-ratio: 0.6;
   align-items: center;
   margin-bottom: 20px;
 `;

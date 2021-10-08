@@ -1,8 +1,9 @@
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
+import calcListItemDimensions from '../../utils/calc-list-item-dimensions';
 
 export const Container = styled.TouchableOpacity`
-  width: 150px;
+  width: ${calcListItemDimensions().width}px;
   height: 100%;
   margin-right: 20px;
   align-items: center;
