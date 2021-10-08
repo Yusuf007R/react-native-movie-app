@@ -3,7 +3,7 @@
 # 🤯React native movie APP
 
 
-A next.js restaurant app, with redux-toolkit and tailwindcss
+a Movie app made with React Native, and [TMDB](https://www.themoviedb.org/documentation/api)
 
 
 
