@@ -1,7 +1,7 @@
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 150px;
   height: 100%;
   margin-right: 20px;
