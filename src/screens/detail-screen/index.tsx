@@ -9,6 +9,8 @@ import ExtraDetails from '../../components/extra-details';
 import StarRating from '../../components/star-rating';
 import {DetailsScreenPropType} from '../../navigator/navigator';
 import {useGetMovieDetailsQuery} from '../../redux/querys/movie-datails-api';
+import {addFavorite, removeFavorite} from '../../redux/slices/movies-slice';
+import {useStoreDispatch, useStoreSelector} from '../../redux/store';
 import {
   CenterContainer,
   Container,
@@ -22,6 +24,16 @@ export default function DetailScreen({route: {params}}: DetailsScreenPropType) {
   const {data, isLoading, isError} = useGetMovieDetailsQuery(params.id);
   const {width, height} = useWindowDimensions();
   const theme = useTheme();
+  const dispatch = useStoreDispatch();
+  const favorites = useStoreSelector(state => state.moviesSlice.favorite);
+  const isFavorite = favorites.some(element => element.id === params.id);
+
+  const onCLickHandler = () => {
+    if (isFavorite) {
+      return dispatch(removeFavorite(params.id));
+    }
+    return dispatch(addFavorite({id: params.id, type: params.type}));
+  };
 
   if (isError) {
     return (
@@ -68,7 +80,11 @@ export default function DetailScreen({route: {params}}: DetailsScreenPropType) {
         <ContentContainer>
           <Title numberOfLines={2}>{data?.details.title}</Title>
           <RowContainer>
-            <Button text="Watch Now" />
+            <Button
+              onPress={onCLickHandler}
+              text="Favorite"
+              isVariant={isFavorite}
+            />
             <StarRating score={data?.details?.vote_average} />
           </RowContainer>
           <Description numberOfLines={8}>{data?.details.overview}</Description>

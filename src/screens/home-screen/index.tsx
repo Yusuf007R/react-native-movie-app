@@ -11,10 +11,11 @@ import {Container, ContentContainer, HeaderBackground} from './style';
 
 export default function HomeScreen() {
   const dispatch = useStoreDispatch();
-  const {topRated, upComing} = useStoreSelector(
+  const {topRated, upComing, favorite} = useStoreSelector(
     state => ({
       topRated: state.moviesSlice.topRated,
       upComing: state.moviesSlice.upComing,
+      favorite: state.moviesSlice.favorite,
     }),
     shallowEqual,
   );
@@ -36,6 +37,9 @@ export default function HomeScreen() {
       {/*@ts-ignore */}
       <Container>
         <ContentContainer>
+          {favorite.length > 0 && (
+            <HorizontalList data={favorite} type="favorite" text="Favorites" />
+          )}
           <HorizontalList data={topRated} type="topRated" text="Top Rated" />
           <HorizontalList data={upComing} type="upComing" text="Up Coming" />
         </ContentContainer>

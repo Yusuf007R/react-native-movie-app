@@ -14,9 +14,17 @@ import {movieDetailsApi} from './querys/movie-datails-api';
 import moviesSlice from './slices/movies-slice';
 import themeSlice from './slices/theme-slice';
 
+const moviePersistConfig = {
+  key: 'movie',
+  storage: AsyncStorage,
+  whitelist: ['favorite'],
+};
+
+const persistMovieSlice = persistReducer(moviePersistConfig, moviesSlice);
+
 const rootReducer = combineReducers({
   themeSlice: themeSlice,
-  moviesSlice: moviesSlice,
+  moviesSlice: persistMovieSlice,
   [movieDetailsApi.reducerPath]: movieDetailsApi.reducer,
 });
 

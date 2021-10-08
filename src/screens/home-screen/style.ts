@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const ContentContainer = styled.View`
   background-color: ${({theme}) => theme.background};
-  height: ${Dimensions.get('window').height}px;
+  min-height: ${Dimensions.get('window').height}px;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
   align-items: center;

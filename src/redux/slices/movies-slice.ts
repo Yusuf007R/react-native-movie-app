@@ -1,4 +1,10 @@
-import {createAsyncThunk, createSlice, Draft} from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  Draft,
+  PayloadAction,
+  current,
+} from '@reduxjs/toolkit';
 import {api} from '../../services';
 import {MoviesListItem} from '../../services/dto';
 
@@ -33,7 +39,7 @@ export const fetchSearchQuery = createAsyncThunk(
   },
 );
 
-export type movieSliceItems = 'upComing' | 'topRated' | 'search';
+export type movieSliceItems = 'upComing' | 'topRated' | 'search' | 'favorite';
 
 type moviesSliceType = {
   [key in movieSliceItems]: MoviesListItem[];
@@ -43,6 +49,7 @@ export const initialState: moviesSliceType = {
   upComing: [],
   topRated: [],
   search: [],
+  favorite: [],
 };
 
 const moviesSlice = createSlice({
@@ -51,6 +58,26 @@ const moviesSlice = createSlice({
   reducers: {
     clearSearch: (state: Draft<moviesSliceType>) => {
       state.search = [];
+    },
+    addFavorite: (
+      state: Draft<moviesSliceType>,
+      action: PayloadAction<{id: number; type: movieSliceItems}>,
+    ) => {
+      const movieSliceCopy = current(state);
+      const movie = movieSliceCopy[action.payload.type].find(
+        element => element.id === action.payload.id,
+      );
+      if (movie) {
+        state.favorite = [...state.favorite, ...[movie]];
+      }
+    },
+    removeFavorite: (
+      state: Draft<moviesSliceType>,
+      action: PayloadAction<number>,
+    ) => {
+      state.favorite = state.favorite.filter(
+        element => element.id !== action.payload,
+      );
     },
   },
   extraReducers: builder => {
@@ -72,6 +99,6 @@ const moviesSlice = createSlice({
   },
 });
 
-export const {clearSearch} = moviesSlice.actions;
+export const {clearSearch, addFavorite, removeFavorite} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

@@ -32,7 +32,7 @@ export default function VerticalListScreen({
         keyExtractor={(element, index) => `${element.id}-${index}`}
         renderItem={({item}) => (
           <ItemContainer numOfColumns={columns}>
-            <VerticalListItem item={item} />
+            <VerticalListItem type={type} item={item} />
           </ItemContainer>
         )}
       />
