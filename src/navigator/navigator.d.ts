@@ -5,6 +5,7 @@ export type RootStackTypes = {
   HomeScreen: undefined;
   DetailsScreen: {
     id: number;
+    type: movieSliceItems;
   };
   VerticalListScreen: {
     type: movieSliceItems;

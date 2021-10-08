@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   width: 100%;
-  height: ${Dimensions.get('window').height}px;
+  min-height: ${Dimensions.get('window').height}px;
   background-color: ${({theme}) => theme.background};
   align-items: center;
 `;

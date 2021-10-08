@@ -3,12 +3,14 @@ import {StyledTouchable, StyledText} from './style';
 
 type propsType = {
   text: string;
+  isVariant: boolean;
+  onPress: () => void;
 };
 
-export default function Button({text}: propsType) {
+export default function Button({text, isVariant, onPress}: propsType) {
   return (
-    <StyledTouchable>
-      <StyledText>{text}</StyledText>
+    <StyledTouchable onPress={onPress} isVariant={isVariant}>
+      <StyledText isVariant={isVariant}>{text}</StyledText>
     </StyledTouchable>
   );
 }

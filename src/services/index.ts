@@ -21,7 +21,7 @@ async function getMovieSearchQuery(
   query: string,
 ): Promise<MovieListType | null> {
   const response = await request.get<MovieListType>(
-    `/search/movie?query=${query}`,
+    `/search/movie?query=${query}&include_adult=false`,
   );
   return handleResponse<MovieListType>(response);
 }

@@ -37,7 +37,9 @@ export default function HorizontalList({type, data, text}: PropsType) {
           data={data}
           horizontal
           keyExtractor={(element, index) => `${element.id}-${index}`}
-          renderItem={({item}) => <HorizontalListItem item={item} />}
+          renderItem={({item}) => (
+            <HorizontalListItem type={type} item={item} />
+          )}
         />
       </FlatListContainer>
     </SectionContainer>
