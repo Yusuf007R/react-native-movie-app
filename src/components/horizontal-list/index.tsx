@@ -1,5 +1,7 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
+import {movieSliceItems} from '../../redux/slices/movies-slice';
 import {MoviesListItem} from '../../services/dto';
 import HorizontalListItem from '../horizontal-list-item';
 import {
@@ -11,17 +13,22 @@ import {
 } from './style';
 
 type PropsType = {
-  type: string;
+  type: movieSliceItems;
   data: MoviesListItem[];
+  text: string;
 };
 
-export default function HorizontalList({type, data}: PropsType) {
+export default function HorizontalList({type, data, text}: PropsType) {
+  const navigation = useNavigation();
+  const handleClick = () => {
+    navigation.navigate('VerticalListScreen', {type, text});
+  };
   return (
     <SectionContainer>
       <SectionHeaderContainer>
-        <StyledText>{type}</StyledText>
-        <TouchableOpacity>
-          <SmallText>See All</SmallText>
+        <StyledText>{text}</StyledText>
+        <TouchableOpacity onPress={handleClick}>
+          <SmallText>Expand</SmallText>
         </TouchableOpacity>
       </SectionHeaderContainer>
       <FlatListContainer>
