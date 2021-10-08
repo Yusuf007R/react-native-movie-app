@@ -17,6 +17,15 @@ async function getMoviesUpcoming(): Promise<MovieListType | null> {
   return handleResponse<MovieListType>(response);
 }
 
+async function getMovieSearchQuery(
+  query: string,
+): Promise<MovieListType | null> {
+  const response = await request.get<MovieListType>(
+    `/search/movie?query=${query}`,
+  );
+  return handleResponse<MovieListType>(response);
+}
+
 async function getMovieDetails(id: number): Promise<MovieDetailType | null> {
   const response = await request.get<MovieDetailType>(`/movie/${id}`);
   return handleResponse<MovieDetailType>(response);
@@ -45,4 +54,5 @@ export const api = {
   getMovieCredits,
   getMovieDetails,
   getMovieImages,
+  getMovieSearchQuery,
 };
