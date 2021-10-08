@@ -1,16 +1,16 @@
 import React from 'react';
-import {CastType} from '../../dummy-data';
+import {CastType} from '../../services/dto';
 import CastItem from '../cast-item';
 import {Container} from './style';
 
 type propsType = {
-  data: CastType[];
+  data?: CastType[];
 };
 
 export default function Cast({data}: propsType) {
   return (
     <Container>
-      {data.map(element => (
+      {data?.map(element => (
         <CastItem {...element} key={element.id} />
       ))}
     </Container>

@@ -10,12 +10,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import {movieDetailsApi} from './querys/movie-datails-api';
 import moviesSlice from './slices/movies-slice';
 import themeSlice from './slices/theme-slice';
 
 const rootReducer = combineReducers({
   themeSlice: themeSlice,
   moviesSlice: moviesSlice,
+  [movieDetailsApi.reducerPath]: movieDetailsApi.reducer,
 });
 
 const persistConfig = {
@@ -33,7 +35,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(movieDetailsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

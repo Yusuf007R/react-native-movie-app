@@ -32,3 +32,9 @@ export const Description = styled.Text`
   color: ${({theme}) => theme.textColor};
   font-size: 14px;
 `;
+
+export const CenterContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
