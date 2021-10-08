@@ -8,9 +8,10 @@ export const FlatListContainer = styled.View`
 
 export const SectionContainer = styled.View`
   width: 100%;
-  height: ${calcListItemDimensions().height + 40}px;
+  height: ${calcListItemDimensions().height + 50}px;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 8px;
+  margin-bottom: 20px;
   padding-left: 20px;
 `;
 

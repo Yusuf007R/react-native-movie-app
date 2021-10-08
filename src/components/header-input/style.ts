@@ -1,6 +1,9 @@
 import styled from 'styled-components/native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Dimensions} from 'react-native';
+
+const width = Dimensions.get('window').width;
 
 export const Container = styled.View`
   width: 100%;
@@ -19,6 +22,6 @@ export const StyledInput = styled.TextInput`
 
 export const StyledIcon = styled(Icon)`
   position: absolute;
-  left: 55px;
+  left: ${width * 0.115}px;
   z-index: 5;
 `;
