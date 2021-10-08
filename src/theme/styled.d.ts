@@ -9,5 +9,6 @@ declare module 'styled-components' {
     yellow: string;
     darkYellow: string;
     blue: string;
+    iconColor: string;
   }
 }

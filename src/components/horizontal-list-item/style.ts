@@ -19,7 +19,6 @@ export const DetailsContainer = styled.View`
   width: 100%;
   flex: 1;
   margin-left: 6px;
-  justify-content: space-between;
   padding-top: 4px;
 `;
 
