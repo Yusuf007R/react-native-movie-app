@@ -22,9 +22,10 @@ export const fetchUpComing = createAsyncThunk(
   },
 );
 
+export type movieSliceItems = 'upComing' | 'topRated';
+
 type moviesSliceType = {
-  upComing: MoviesListItem[];
-  topRated: MoviesListItem[];
+  [key in movieSliceItems]: MoviesListItem[];
 };
 
 export const initialState: moviesSliceType = {
@@ -49,5 +50,6 @@ const moviesSlice = createSlice({
     });
   },
 });
+console.log(moviesSlice);
 
 export default moviesSlice.reducer;

@@ -36,8 +36,8 @@ export default function HomeScreen() {
       {/*@ts-ignore */}
       <Container>
         <ContentContainer>
-          <HorizontalList data={topRated} type="TopRated" />
-          <HorizontalList data={upComing} type="UpComing" />
+          <HorizontalList data={topRated} type="topRated" text="Top Rated" />
+          <HorizontalList data={upComing} type="upComing" text="Up Coming" />
         </ContentContainer>
       </Container>
     </ImageHeaderScrollView>

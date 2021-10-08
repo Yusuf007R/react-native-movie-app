@@ -20,7 +20,7 @@ import {
 
 export default function DetailScreen({route: {params}}: DetailsScreenPropType) {
   const {data, isLoading, isError} = useGetMovieDetailsQuery(params.id);
-  const {width} = useWindowDimensions();
+  const {width, height} = useWindowDimensions();
   const theme = useTheme();
 
   if (isError) {
@@ -43,12 +43,17 @@ export default function DetailScreen({route: {params}}: DetailsScreenPropType) {
     );
   }
 
-  const aspectRatio = (() =>
-    data && data.image ? data.image.height / data.image.width : 1)();
+  const maxHeight = (() => {
+    const aspectRatio =
+      data && data.image ? data.image.height / data.image.width : 1;
+    return width * aspectRatio > height * 0.8
+      ? height * 0.8
+      : width * aspectRatio;
+  })();
 
   return (
     <ImageHeaderScrollView
-      maxHeight={width * aspectRatio || 1}
+      maxHeight={maxHeight}
       minHeight={0}
       maxOverlayOpacity={0.7}
       key={data?.details?.id || 1}
