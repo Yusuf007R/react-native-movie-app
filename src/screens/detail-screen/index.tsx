@@ -7,6 +7,7 @@ import Cast from '../../components/cast';
 import DetailsHeaderBackground from '../../components/details-header-background';
 import ExtraDetails from '../../components/extra-details';
 import StarRating from '../../components/star-rating';
+import {DetailsScreenPropType} from '../../navigator/navigator';
 import {useGetMovieDetailsQuery} from '../../redux/querys/movie-datails-api';
 import {
   CenterContainer,
@@ -17,8 +18,8 @@ import {
   Title,
 } from './style';
 
-export default function DetailScreen() {
-  const {data, isLoading, isError} = useGetMovieDetailsQuery(335983);
+export default function DetailScreen({route: {params}}: DetailsScreenPropType) {
+  const {data, isLoading, isError} = useGetMovieDetailsQuery(params.id);
   const {width} = useWindowDimensions();
   const theme = useTheme();
 
