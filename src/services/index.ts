@@ -1,6 +1,11 @@
 import {request} from '../utils/request';
 import {ApiResponse} from 'apisauce';
-import {MovieCreditsType, MovieDetailType, MovieListType} from './dto';
+import {
+  MovieCreditsType,
+  MovieDetailType,
+  MovieImagesType,
+  MovieListType,
+} from './dto';
 
 async function getMoviesTopRated(): Promise<MovieListType | null> {
   const response = await request.get<MovieListType>('/movie/top_rated');
@@ -22,6 +27,11 @@ async function getMovieCredits(id: number): Promise<MovieCreditsType | null> {
   return handleResponse<MovieCreditsType>(response);
 }
 
+async function getMovieImages(id: number): Promise<MovieImagesType | null> {
+  const response = await request.get<MovieImagesType>(`/movie/${id}/images`);
+  return handleResponse<MovieImagesType>(response);
+}
+
 function handleResponse<T>(response: ApiResponse<T, T>) {
   if (response.ok && response?.data) {
     return response.data;
@@ -34,4 +44,5 @@ export const api = {
   getMoviesUpcoming,
   getMovieCredits,
   getMovieDetails,
+  getMovieImages,
 };

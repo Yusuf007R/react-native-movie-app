@@ -4,10 +4,10 @@ import {useTheme} from 'styled-components';
 import {IconContainer} from './style';
 
 type propsType = {
-  score: number;
+  score?: number;
 };
 
-export default function StarRating({score}: propsType) {
+export default function StarRating({score = 0}: propsType) {
   const theme = useTheme();
   const starCount = Math.round(score / 2);
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {CastType} from '../../dummy-data';
+import {CastType} from '../../services/dto';
 import {Container, StyledImage, StyledText} from './style';
 
 export default function CastItem({profile_path, original_name}: CastType) {
